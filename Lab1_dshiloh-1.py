@@ -21,14 +21,22 @@ def find_check_digit(upc):
 
 
 
-#ask user for upc
-input_UPC: str = input("Enter UPC: ")
+input_UPC: str = input("\nEnter a 12-digit UPC: ")
 
+if len(input_UPC) != 12:
+    print("no")
 #validate that input is 12 char, only numbers
     #if invalid, print error and ask again
 
-#use fxn to calculate correct check digit
-print(find_check_digit(input_UPC[:-1]))
-    #compare returned check digit to actual 12th digit
+returned_check = find_check_digit(input_UPC)
+given_check = int(input_UPC[-1])
 
-#inform user if full upc is valid or invalid
+print(f"\nThe first 11 digits are '{input_UPC[:-1]}'.")
+print(f"The provided check digit is '{given_check}'.")
+print("\nCalculating...")
+print(f"The expected check digit is {returned_check}.")
+
+if returned_check == given_check:
+    print("\nThis is a VALID UPC.")
+else:
+    print("\nThis is an INVALID UPC.\n")
