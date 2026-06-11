@@ -21,12 +21,21 @@ def find_check_digit(upc):
 
 
 
-input_UPC: str = input("\nEnter a 12-digit UPC: ")
+input_UPC: str = ""
 
-if len(input_UPC) != 12:
-    print("no")
-#validate that input is 12 char, only numbers
-    #if invalid, print error and ask again
+while True:
+    
+    input_UPC = input("\nEnter a 12-digit UPC: ")
+
+    if len(input_UPC) != 12:
+        print("UPC must be 12 characters long.")
+        continue
+    
+    if not input_UPC.isdigit():
+        print("UPC may only contain numbers.")
+        continue
+    
+    break
 
 returned_check = find_check_digit(input_UPC)
 given_check = int(input_UPC[-1])
