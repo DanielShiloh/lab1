@@ -6,6 +6,7 @@ June 10, 2026
 """
 
 def find_check_digit(upc):
+    """Calculates check digit for UPC-A code"""
     
     sum = 0
 
