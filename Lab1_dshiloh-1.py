@@ -9,17 +9,17 @@ def find_check_digit(upc):
     
     sum = 0
 
-    #sum odd positions
+    for position in range(11):
+        if (position+1) % 2 == 0:
+            sum += int(upc[position])
+        else:
+            sum += int(upc[position]) * 3
 
-    #odd sum x 3
+    sum = sum % 10 - 10
 
-    #add even positions
+    return abs(sum)
 
-    #result modulo 10 = M
 
-    #check digit is 0 or 10-M
-
-    #return check digit
 
 #ask user for upc
 input_UPC: str = input("Enter UPC: ")
@@ -28,7 +28,7 @@ input_UPC: str = input("Enter UPC: ")
     #if invalid, print error and ask again
 
 #use fxn to calculate correct check digit
-find_check_digit(input_UPC[:-1])
+print(find_check_digit(input_UPC[:-1]))
     #compare returned check digit to actual 12th digit
 
 #inform user if full upc is valid or invalid
